@@ -15,9 +15,26 @@ function round_up(e, A) {
 var minSellRate = 400;
 var buying = false,
 infobox = document.createElement("div");
-infobox.className = "info_box", infobox.innerHTML = "Monitoring market for buying resources, minimize this window and enjoy but don't open new tab here.";
-var count = 0; - 1 === window.location.href.indexOf("screen=market&mode=exchange") ? alert("You need to be in the Premium exchange section of the market") : (beep(), document.querySelector("#contentContainer").parentNode.insertBefore(infobox, document.querySelector("#contentContainer")), document.addEventListener("keyup", function (e) {
-	81 == e.keyCode ? document.querySelector("input.premium-exchange-input[data-resource = 'wood'][data-type = '" + (buying ? "buy" : "sell") + "']").value = round_up(buying ? wood : wood_capacity - wood, wood_rate) : 87 == e.keyCode ? document.querySelector("input.premium-exchange-input[data-resource = 'stone'][data-type = '" + (buying ? "buy" : "sell") + "']").value = round_up(buying ? clay : clay_capacity - clay, clay_rate) : 69 == e.keyCode ? document.querySelector("input.premium-exchange-input[data-resource = 'iron'][data-type = '" + (buying ? "buy" : "sell") + "']").value = round_up(buying ? iron : iron_capacity - iron, iron_rate) : 82 == e.keyCode ? (document.querySelector("input.premium-exchange-input[data-resource = 'wood']").value = 0, document.querySelector("input.premium-exchange-input[data-resource = 'stone']").value = 0, document.querySelector("input.premium-exchange-input[data-resource = 'iron']").value = 0, document.querySelector("input.premium-exchange-input[data-resource = 'wood']").placeholder = 0, document.querySelector("input.premium-exchange-input[data-resource = 'stone']").placeholder = 0, document.querySelector("input.premium-exchange-input[data-resource = 'iron']").placeholder = 0, document.querySelector("input.premium-exchange-input[data-resource = 'wood'][data-type='sell']").value = 0, document.querySelector("input.premium-exchange-input[data-resource = 'stone'][data-type='sell']").value = 0, document.querySelector("input.premium-exchange-input[data-resource = 'iron'][data-type='sell']").value = 0, document.querySelector("input.premium-exchange-input[data-resource = 'wood'][data-type='sell']").placeholder = 0, document.querySelector("input.premium-exchange-input[data-resource = 'stone'][data-type='sell']").placeholder = 0, document.querySelector("input.premium-exchange-input[data-resource = 'iron'][data-type='sell']").placeholder = 0) : 65 == e.keyCode ? (buying = 1, infobox.innerHTML = "Monitoring market for buying resources, minimize this window and enjoy but don't open new tab here.") : 83 == e.keyCode && (buying = 0, infobox.innerHTML = "Monitoring market for selling resources, minimize this window and enjoy but don't open new tab here.")
-}), setInterval(function () {
-	PremiumExchange.loadData(), count++, infobox.innerHTML = "Monitoring market for selling resources, minimize this window and enjoy but don't open new tab here. " + count, wood = document.querySelector("#premium_exchange_stock_wood").innerHTML, clay = document.querySelector("#premium_exchange_stock_stone").innerHTML, iron = document.querySelector("#premium_exchange_stock_iron").innerHTML, wood_rate = parse_int(document.querySelector("#premium_exchange_rate_wood div img").nextSibling), clay_rate = parse_int(document.querySelector("#premium_exchange_rate_stone div img").nextSibling), iron_rate = parse_int(document.querySelector("#premium_exchange_rate_iron div img").nextSibling),  (wood_capacity = document.querySelector("#premium_exchange_capacity_wood").innerHTML, clay_capacity = document.querySelector("#premium_exchange_capacity_stone").innerHTML, iron_capacity = document.querySelector("#premium_exchange_capacity_iron").innerHTML, (wood_capacity - wood >= wood_rate || clay_capacity - clay >= clay_rate || iron_capacity - iron >= iron_rate) && (wood_rate <= minSellRate || clay_rate <= minSellRate || iron_rate <= minSellRate, beep()))
-}, 1e3));
+infobox.className = "info_box", infobox.innerHTML = "Monitoring market for selling resources, minimize this window and enjoy but don't open new tab here.";
+var count = 0; 
+
+setInterval(function () {
+    PremiumExchange.loadData(), count++, 
+    infobox.innerHTML = "Monitoring market for selling resources, minimize this window and enjoy but don't open new tab here. " + count, 
+    wood = document.querySelector("#premium_exchange_stock_wood").innerHTML, 
+    clay = document.querySelector("#premium_exchange_stock_stone").innerHTML, 
+    iron = document.querySelector("#premium_exchange_stock_iron").innerHTML, 
+    wood_rate = parse_int(document.querySelector("#premium_exchange_rate_wood div img").nextSibling), 
+    clay_rate = parse_int(document.querySelector("#premium_exchange_rate_stone div img").nextSibling), 
+    iron_rate = parse_int(document.querySelector("#premium_exchange_rate_iron div img").nextSibling),  
+    wood_capacity = document.querySelector("#premium_exchange_capacity_wood").innerHTML, 
+    clay_capacity = document.querySelector("#premium_exchange_capacity_stone").innerHTML, 
+    iron_capacity = document.querySelector("#premium_exchange_capacity_iron").innerHTML, 
+    resAvailable = wood_capacity - wood >= wood_rate || clay_capacity - clay >= clay_rate || iron_capacity - iron >= iron_rate,
+    minRateMatched = wood_rate <= minSellRate || clay_rate <= minSellRate || iron_rate <= minSellRate;
+    if(resAvailable && minRateMatched){
+        beep() ;
+    }
+}, 1e3);
+
+// $.getScript('https://cdn.jsdelivr.net/gh/RazorBlue/scripts/watcher2.min.js');
