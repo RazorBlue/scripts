@@ -13,7 +13,6 @@ function round_up(e, A) {
 	return Math.floor(e / A) * A
 }
 var minSellRate = 400;
-var buying = false,
 infobox = document.createElement("div");
 infobox.className = "info_box", infobox.innerHTML = "Monitoring market for selling resources, minimize this window and enjoy but don't open new tab here.";
 var count = 0; 
@@ -36,5 +35,3 @@ setInterval(function () {
         beep() ;
     }
 }, 1e3);
-
-// $.getScript('https://cdn.jsdelivr.net/gh/RazorBlue/scripts/watcher2.min.js');
