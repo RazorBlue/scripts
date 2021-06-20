@@ -13,7 +13,7 @@ function round_up(e, A) {
 	return Math.floor(e / A) * A
 }
 var minSellRate = 400;
-var buying = 1,
+var buying = false,
 infobox = document.createElement("div");
 infobox.className = "info_box", infobox.innerHTML = "Monitoring market for buying resources, minimize this window and enjoy but don't open new tab here.";
 var count = 0; - 1 === window.location.href.indexOf("screen=market&mode=exchange") ? alert("You need to be in the Premium exchange section of the market") : (beep(), document.querySelector("#contentContainer").parentNode.insertBefore(infobox, document.querySelector("#contentContainer")), document.addEventListener("keyup", function (e) {
