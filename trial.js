@@ -31,7 +31,7 @@ setInterval(function () {
     iron_capacity = document.querySelector("#premium_exchange_capacity_iron").innerHTML, 
     resAvailable = wood_capacity - wood >= wood_rate || clay_capacity - clay >= clay_rate || iron_capacity - iron >= iron_rate,
     minRateMatched = wood_rate <= minSellRate || clay_rate <= minSellRate || iron_rate <= minSellRate;
-    if(resAvailable && minRateMatched){
+    if(resAvailable){
         beep() ;
     }
 }, 1e3);
