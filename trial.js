@@ -12,7 +12,7 @@ function parse_int(e) {
 function round_up(e, A) {
 	return Math.floor(e / A) * A
 }
-var minSellRate = 800;
+var minSellRate = 300;
 infobox = document.createElement("div");
 infobox.className = "info_box", infobox.innerHTML = "Monitoring market for selling resources, minimize this window and enjoy but don't open new tab here.";
 var count = 0; 
