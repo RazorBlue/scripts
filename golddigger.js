@@ -1,8 +1,7 @@
-
-const health_boost = "Adds health points to your guard.";
-const power_boost = "Increases your guards attack strength.";
-const next_level = "Leave this level and go to the next.";
-const attack_bandits = "Attack the bandits!";
+var health_boost = "Adds health points to your guard.";
+var power_boost = "Increases your guards attack strength.";
+var next_level = "Leave this level and go to the next.";
+var attack_bandits = "Attack the bandits!";
 
 var i = 0;
 function f() {
