@@ -1,6 +1,6 @@
 /* 
 Script: Golddigger.js
-Version: 1.0
+Version: 1.1
 */
 const health_boost = "Adds health points to your guard.";
 const power_boost = "Increases your guards attack strength.";
@@ -37,7 +37,7 @@ function f() {
 
     i++;
     if( i > -1 ){
-        setTimeout( f, 500 );
+        setTimeout( f, Math.random() * (1500 - 400) + 400 );
     }
 }
 f();
